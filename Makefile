@@ -18,3 +18,7 @@ init/%: create/%
 
 .PHONY: create
 create: $(addprefix create/,$(subst /,-,$(wildcard */*)))
+
+.PHONY: test
+test:
+	@echo $(wildcard basic/blink/*) $(wildcard basic/blink/.[^.]*)

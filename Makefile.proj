@@ -7,6 +7,6 @@ build:
 	$(INO) build $(BOARD_OPT)
 
 .PHONY: upload
-upload:
+upload: build
 	$(INO) upload $(BOARD_OPT)
 
