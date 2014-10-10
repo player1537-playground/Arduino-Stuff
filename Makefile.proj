@@ -4,11 +4,17 @@ BOARD = diecimila
 BOARD_OPT = --board-model $(BOARD)
 ARDUINO_DIST_OPT = --arduino-dist $(HOME)/.arduino/
 
+AVRDUDE = avrdude
+PROC.attiny45-8 = attiny45
+PROC.diecimila = atmega168
+PROC = ${PROC.${BOARD}}
+TTYUSB = /dev/ttyUSB1
+
 .PHONY: build
 build:
 	$(INO) build $(BOARD_OPT) $(ARDUINO_DIST_OPT)
 
 .PHONY: upload
 upload: build
-	$(INO) upload $(BOARD_OPT) $(ARDUINO_DIST_OPT)
+	$(AVRDUDE) -p$(PROC) -b 19200 -c stk500v1 -q -P $(TTYUSB) -U flash:w:$(wildcard .build/${BOARD}*/firmware.hex):i
 
