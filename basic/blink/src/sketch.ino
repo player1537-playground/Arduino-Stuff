@@ -1,7 +1,6 @@
-const int pinNumber = 13;
+const int pinNumber = 0;
 
 void setup(void) {
-  Serial.begin(9600);
   pinMode(pinNumber, OUTPUT);
 }
 
