@@ -1,5 +1,5 @@
-int buttonPin = 1;
-int ledPin = 0;
+const int buttonPin = 1;
+const int ledPin = 0;
 int ledState = HIGH;
 int prevButton = LOW;
 int curButton = LOW;

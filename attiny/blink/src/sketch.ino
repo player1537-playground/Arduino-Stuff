@@ -1,4 +1,4 @@
-const int pinNumber = 13;
+const int pinNumber = 0;
 
 void setup(void) {
   pinMode(pinNumber, OUTPUT);

@@ -1,12 +1,14 @@
 SHELL = /bin/bash
 INO = ino
-BOARD_OPT = --board-model diecimila
+BOARD = diecimila
+BOARD_OPT = --board-model $(BOARD)
+ARDUINO_DIST_OPT = --arduino-dist $(HOME)/.arduino/
 
 .PHONY: build
 build:
-	$(INO) build $(BOARD_OPT)
+	$(INO) build $(BOARD_OPT) $(ARDUINO_DIST_OPT)
 
 .PHONY: upload
 upload: build
-	$(INO) upload $(BOARD_OPT)
+	$(INO) upload $(BOARD_OPT) $(ARDUINO_DIST_OPT)
 
