@@ -8,7 +8,11 @@ AVRDUDE = avrdude
 PROC.attiny45-8 = attiny45
 PROC.diecimila = atmega168
 PROC = ${PROC.${BOARD}}
+PROGRAMMER.attiny45-8 = stk500v1
+PROGRAMMER.diecimila = arduino
+PROGRAMMER = ${PROGRAMMER.${BOARD}}
 TTYUSB = /dev/ttyUSB1
+VERBOSE = 
 
 .PHONY: build
 build:
@@ -16,6 +20,6 @@ build:
 
 .PHONY: upload
 upload: build
-	$(AVRDUDE) -p$(PROC) -b 19200 -c stk500v1 -q -P $(TTYUSB) \
-		-U flash:w:$(wildcard .build/${BOARD}*/firmware.hex):i
+	$(AVRDUDE) -p$(PROC) -b 19200 -c $(PROGRAMMER) -q -P $(TTYUSB) \
+	$(VERBOSE) -U flash:w:$(wildcard .build/${BOARD}*/firmware.hex):i
 
