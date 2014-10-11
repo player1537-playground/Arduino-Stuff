@@ -1,0 +1,6 @@
+*~
+*.bak
+*-cache.lib
+\#*
+.build
+.\#*

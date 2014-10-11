@@ -1,4 +1,3 @@
-#include "../lib/Servo8Bit/Servo8Bit.h"
 #include "../lib/Servo8Bit/Servo8Bit.cpp"
  
 Servo8Bit esc;  // create servo object to control an ESC (via ppm) 

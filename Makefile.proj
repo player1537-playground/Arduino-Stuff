@@ -16,5 +16,6 @@ build:
 
 .PHONY: upload
 upload: build
-	$(AVRDUDE) -p$(PROC) -b 19200 -c stk500v1 -q -P $(TTYUSB) -U flash:w:$(wildcard .build/${BOARD}*/firmware.hex):i
+	$(AVRDUDE) -p$(PROC) -b 19200 -c stk500v1 -q -P $(TTYUSB) \
+		-U flash:w:$(wildcard .build/${BOARD}*/firmware.hex):i
 
