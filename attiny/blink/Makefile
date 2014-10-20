@@ -1,1 +1,10 @@
-../../Makefile.proj
+ARDUINO_LIBS =
+BOARD_TAG = attiny45-8
+MONITOR_PORT = /dev/ttyUSB0
+ARDUINO_DIR = $(HOME)/.arduino
+ISP_PROG = stk500v1
+ISP_PORT = /dev/ttyUSB0
+AVRDUDE_ISP_BAUDRATE = 9600
+AVRDUDE_OPTS = -F -q
+
+include /usr/share/arduino/Arduino.mk
