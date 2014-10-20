@@ -13,7 +13,7 @@
   const int servoPin = 0;
   const int ledPin = 2;
 #else
-  #include <Servo.h>
+//#include <Servo.h>
   typedef Servo Servo_t;
   const int servoPin = 0;
   const int ledPin = 13;
@@ -35,10 +35,11 @@ void setup()
   servo.attach(servoPin, 500, 1500);
 #ifdef SERVO_TO_LED
   //pinMode(ledPin, OUTPUT);
-  servo2.attach(ledPin, 0, 2000*10);
+  servo2.attach(ledPin, 500, 1500);
 #elif defined TIMING_TO_LED
   pinMode(ledPin, OUTPUT);
 #endif
+  int nothing = 0;
 }
 
 #ifdef SIMPLE_TEST
