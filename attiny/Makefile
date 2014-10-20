@@ -6,6 +6,5 @@ ISP_PORT = /dev/ttyUSB0
 AVRDUDE_ISP_BAUDRATE = 9600
 AVRDUDE_OPTS = -F -q
 USER_LIB_PATH = lib
-ARDUINO_LIBS =
 
 include /usr/share/arduino/Arduino.mk
