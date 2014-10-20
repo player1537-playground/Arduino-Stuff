@@ -55,18 +55,18 @@
 
 
 
-#ifdef USE_TIMER0
+#if defined(USE_TIMER0)
     #define TCNTn   TCNT0
     #define OCRnx   OCR0A
     #define OCFnx   OCF0A
     #define OCIEnx  OCIE0A
-#endif
-
-#ifdef USE_TIMER1
+#elif defined(USE_TIMER1)
     #define TCNTn   TCNT1
     #define OCRnx   OCR1A
     #define OCFnx   OCF1A
     #define OCIEnx  OCIE1A
+#else
+    #error "At least one timer must be specified"
 #endif
 
 // Trim Duration is about the total combined time spent inside the Compare Match ISR
@@ -493,6 +493,7 @@ void ServoSequencer::setupTimerPrescaler()
         TCCR0B = 0;
 
         #if F_CPU == 8000000L
+            #pragma message("Timer 0 AND 8 MHz")
             //set counter0 prescaler to 64
             //our FCLK is 8mhz so this makes each timer tick be 8 microseconds long
             TCCR0B &= ~(1<< CS02); //clear
@@ -500,6 +501,7 @@ void ServoSequencer::setupTimerPrescaler()
             TCCR0B |=  (1<< CS00); //set
 
         #elif F_CPU == 1000000L
+            #pragma message("Timer 0 AND 1 MHz")
             //set counter0 prescaler to 8
             //our F_CPU is 1mhz so this makes each timer tick be 8 microseconds long
             TCCR0B &= ~(1<< CS02); //clear
@@ -508,15 +510,16 @@ void ServoSequencer::setupTimerPrescaler()
         #else
             //unsupported clock speed
             //TODO: find a way to have the compiler stop compiling and bark at the user
+	    #error "Unsupported clock speed"
         #endif
     #endif
-
 
     #ifdef USE_TIMER1
         //reset the Timer Counter Control Register to its reset value
         TCCR1 = 0;
 
         #if F_CPU == 8000000L
+            #pragma message("Timer 1 AND 8 MHz")
             //set counter1 prescaler to 64
             //our F_CPU is 8mhz so this makes each timer tick be 8 microseconds long
             TCCR1 &= ~(1<< CS13); //clear
@@ -525,6 +528,7 @@ void ServoSequencer::setupTimerPrescaler()
             TCCR1 |=  (1<< CS10); //set
 
         #elif F_CPU == 1000000L
+            #pragma message("Timer 1 AND 1 MHz")
             //set counter1 prescaler to 8
             //our F_CPU is 1mhz so this makes each timer tick be 8 microseconds long
             TCCR1 &= ~(1<< CS13); //clear
@@ -534,6 +538,7 @@ void ServoSequencer::setupTimerPrescaler()
         #else
             //unsupported clock speed
             //TODO: find a way to have the compiler stop compiling and bark at the user
+	    #error "Unsupported clock speed"
         #endif
     #endif
 }//end setupTimerPrescaler
@@ -814,7 +819,7 @@ Servo8Bit::~Servo8Bit()
 //
 //=============================================================================
 uint8_t Servo8Bit::attach(uint8_t pin)
-{	
+{
 	//Do we need to register with the servo sequencer?
     if(myServoNumber == invalidServoNumber)
 	{

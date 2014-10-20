@@ -1,20 +1,20 @@
 /*
 #define SERVO_TO_LED
 #define SIMPLE_TEST
-#define USE_ATTINY
 */
 #define TIMING_TO_LED
+#define USE_ATTINY
 
 #ifdef USE_ATTINY
-/*  #include "../lib/Servo8Bit/Servo8Bit.cpp" */
+  #include "../lib/Servo8Bit/Servo8Bit.cpp"
   typedef Servo8Bit Servo_t;
-  const int servoPin = 0;
+  const int servoPin = 4;
   const int ledPin = 2;
 #else
-  #include <Servo.h>
-  typedef Servo Servo_t;
-  const int servoPin = 0;
-  const int ledPin = 13;
+/*  #include <Servo.h> */
+/*  typedef Servo Servo_t; */
+/*  const int servoPin = 0; */
+/*  const int ledPin = 13; */
 #endif
 
 Servo_t servo;
@@ -61,7 +61,7 @@ void loop()
     delay(ledPulseDuration);
   }
 #endif
-  
+
   servo.write(180);
 #ifdef SERVO_TO_LED
   servo2.write(180);
@@ -74,7 +74,7 @@ void loop()
     delay(ledPulseDuration);
   }
 #endif
-  
+
 #ifdef TIMING_TO_LED
   digitalWrite(ledPin, HIGH);
 #endif
@@ -85,7 +85,7 @@ void loop()
 #endif
     delay(15);
   }
-  
+
 #ifdef TIMING_TO_LED
   digitalWrite(ledPin, LOW);
 #endif
