@@ -50,8 +50,7 @@
 //Options
 //pick one, comment out the other one out:
 //#define USE_TIMER0
-#define USE_TIMER0
-#define F_CPU 8000000L
+#define USE_TIMER1
 
 
 class Servo8Bit

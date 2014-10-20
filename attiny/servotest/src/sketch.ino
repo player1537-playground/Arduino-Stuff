@@ -1,20 +1,22 @@
 /*
-#define SERVO_TO_LED
 #define SIMPLE_TEST
-*/
 #define TIMING_TO_LED
-#define USE_ATTINY
+*/
+#define SERVO_TO_LED
+#if ARDUINO == 106
+  #define USE_ATTINY
+#endif
 
 #ifdef USE_ATTINY
-  #include "../lib/Servo8Bit/Servo8Bit.cpp"
+  #include "lib/Servo8Bit/Servo8Bit.h"
   typedef Servo8Bit Servo_t;
-  const int servoPin = 4;
+  const int servoPin = 0;
   const int ledPin = 2;
 #else
-/*  #include <Servo.h> */
-/*  typedef Servo Servo_t; */
-/*  const int servoPin = 0; */
-/*  const int ledPin = 13; */
+  #include <Servo.h>
+  typedef Servo Servo_t;
+  const int servoPin = 0;
+  const int ledPin = 13;
 #endif
 
 Servo_t servo;
@@ -29,10 +31,11 @@ int pos;
 
 void setup()
 {
-  pinMode(servoPin, OUTPUT);
-  servo.attach(servoPin, 1000, 2000);
+  //pinMode(servoPin, OUTPUT);
+  servo.attach(servoPin, 500, 1500);
 #ifdef SERVO_TO_LED
-  servo2.attach(ledPin, 0, 2000*1000);
+  //pinMode(ledPin, OUTPUT);
+  servo2.attach(ledPin, 0, 2000*10);
 #elif defined TIMING_TO_LED
   pinMode(ledPin, OUTPUT);
 #endif
