@@ -29,5 +29,5 @@ void loop(void) {
 
   digitalWrite(ledPin, value);
 
-  delay(500);
+  delay(10);
 }

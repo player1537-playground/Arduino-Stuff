@@ -1,21 +1,21 @@
 SHELL = /bin/bash
-INO = ino
 
 # Format: create/project-subproject
 .PHONY: create/%
 create/%: DIR = $(subst -,/,$*)
-create/%: 
+create/%:
 	mkdir -p $(DIR)
-	ln -sf ../../Makefile.proj $(DIR)/Makefile
 	mkdir -p $(DIR)/diagram
+	mkdir -p $(DIR)/src
+	mkdir -p $(DIR)/lib
+	if [ -e $(DIR)/Makefile ]; then \
+		echo 'include ../Makefile' > $(DIR)/Makefile; \
+	fi
 
 .PHONY: init/%
 init/%: DIR = $(subst -,/,$*)
-init/%: create/% 
-	mkdir -p $(DIR)/ino
-	cd $(DIR)/ino; $(INO) init
-	mv $(DIR)/ino/* $(DIR)/
-	rm $(DIR)/ino/ -r
+init/%: create/%
+	cp base.ino $(DIR)/src/sketch.ino
 	ln -s src/sketch.ino $(DIR)/$(notdir $(DIR)).ino
 
 .PHONY: create
