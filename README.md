@@ -25,11 +25,11 @@ To build and upload the program to the arduino or attiny, use the command
 # Repository Structure
 
     Arduino-Stuff/
-    -- base.ino			           # Contains the base code which is copied to each new project
-    -- libraries/			   # Contains all of the libraries which might be used by projects
-    ---- KiCad/				   # Contains components for use in schematics
+    -- base.ino                            # Contains the base code which is copied to each new project
+    -- libraries/                          # Contains all of the libraries which might be used by projects
+    ---- KiCad/                            # Contains components for use in schematics
     ------ <library files>
-    ---- <other libraries>/		   # Each library gets its own folder
+    ---- <other libraries>/                # Each library gets its own folder
     ------ <other library source code>
     -- Project/                            # Then each project (e.g. quadcopter)
     ---- Makefile                          # A common makefile used for most of the project, which sets appropriate variables
