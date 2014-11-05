@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Fri 10 Oct 2014 09:29:33 PM EDT
+EESchema Schematic File Version 2
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -29,13 +29,13 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-EELAYER 25  0
+EELAYER 27 0
 EELAYER END
-$Descr A4 11700 8267
+$Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "11 oct 2014"
+Date "5 nov 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -68,6 +68,8 @@ U 1 1 543886A7
 P 3300 4100
 F 0 "#PWR?" H 3300 4100 30  0001 C CNN
 F 1 "GND" H 3300 4030 30  0001 C CNN
+F 2 "" H 3300 4100 60  0001 C CNN
+F 3 "" H 3300 4100 60  0001 C CNN
 	1    3300 4100
 	1    0    0    -1  
 $EndComp
@@ -77,6 +79,8 @@ U 1 1 543885F2
 P 5500 3050
 F 0 "#PWR?" H 5500 3150 30  0001 C CNN
 F 1 "VCC" H 5500 3150 30  0000 C CNN
+F 2 "" H 5500 3050 60  0001 C CNN
+F 3 "" H 5500 3050 60  0001 C CNN
 	1    5500 3050
 	1    0    0    -1  
 $EndComp
@@ -86,6 +90,8 @@ U 1 1 543884EA
 P 4950 4550
 F 0 "R?" H 5030 4550 50  0000 C CNN
 F 1 "470" V 4950 4550 50  0000 C CNN
+F 2 "" H 4950 4550 60  0001 C CNN
+F 3 "" H 4950 4550 60  0001 C CNN
 	1    4950 4550
 	0    1    1    0   
 $EndComp
@@ -95,15 +101,19 @@ U 1 1 543884D7
 P 3950 4550
 F 0 "D?" H 3950 4650 50  0000 C CNN
 F 1 "LED" H 3950 4450 50  0000 C CNN
+F 2 "" H 3950 4550 60  0001 C CNN
+F 3 "" H 3950 4550 60  0001 C CNN
 	1    3950 4550
 	-1   0    0    1   
 $EndComp
 $Comp
-L PIC12C508A U?
-U 1 1 543884B0
+L ATTINY45 U?
+U 1 1 5459A754
 P 4500 3550
 F 0 "U?" H 4500 4250 60  0000 C CNN
-F 1 "ATTiny45" H 4500 2900 60  0000 C CNN
+F 1 "ATTINY45" H 4500 2900 60  0000 C CNN
+F 2 "~" H 4500 3550 60  0000 C CNN
+F 3 "~" H 4500 3550 60  0000 C CNN
 	1    4500 3550
 	1    0    0    -1  
 $EndComp
