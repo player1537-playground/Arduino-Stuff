@@ -31,14 +31,14 @@ To build and upload the program to the arduino or attiny, use the command
     ------ <library files>
     ---- <other libraries>/		   # Each library gets its own folder
     ------ <other library source code>
-    -- Project/				   # Then each project (e.g. quadcopter)
-    ---- Makefile			   # A common makefile used for most of the project, which sets appropriate variables
-    ---- Subproject/			   # Then each subproject (e.g. motors)
-    ------ Makefile			   # The specific makefile for the current subproject, usually is just "include ../Makefile"
-    ------ src/				   # The src/ directory only contains one file, sketch.ino
+    -- Project/                            # Then each project (e.g. quadcopter)
+    ---- Makefile                          # A common makefile used for most of the project, which sets appropriate variables
+    ---- Subproject/                       # Then each subproject (e.g. motors)
+    ------ Makefile                        # The specific makefile for the current subproject, usually is just "include ../Makefile"
+    ------ src/                            # The src/ directory only contains one file, sketch.ino
     -------- sketch.ino
-    ------ lib/				   # The lib/ directory contains relative symlinks to the root libraries/ directory
-    ------ diagram/			   # Contains the schematic drawings (which can be opened with KiCad)
+    ------ lib/                            # The lib/ directory contains relative symlinks to the root libraries/ directory
+    ------ diagram/                        # Contains the schematic drawings (which can be opened with KiCad)
     -------- diagram.pro
     -------- diagram.sch
 
