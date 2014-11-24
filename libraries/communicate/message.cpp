@@ -1,34 +1,31 @@
 #include "message.h"
 #include <Arduino.h>
 
-byte read_message(void) {
-  switch (message_state) {
+byte read_message(struct message_t *message) {
+  byte body_length;
+
+  switch (message->state) {
   case WAITING_FOR_LENGTH: {
     if (Serial.available() > 0) {
-      message.header.length = Serial.read();
-      message_state = WAITING_FOR_ACTION;
+      message->data.header.length = Serial.read();
+      message->state = WAITING_FOR_ACTION;
     }
     break;
   }
   case WAITING_FOR_ACTION: {
     if (Serial.available() > 0) {
-      message.header.action = Serial.read();
-      message_state = WAITING_FOR_MESSAGE;
+      message->data.header.action = Serial.read();
+      message->state = WAITING_FOR_MESSAGE;
     }
     break;
   }
   case WAITING_FOR_MESSAGE: {
-    byte body_length = message.header.length - sizeof(message.header);
+    body_length = message->data.header.length - sizeof(message->data.header);
     if (Serial.available() >= body_length) {
       for (byte i=0; i<body_length; ++i) {
-	(void)Serial.read();
+	message->data.body[i] = Serial.read();
       }
-      message_state = WAITING_FOR_LENGTH;
-    } else {
-      for (byte i=0; i<body_length; ++i) {
-	message.body[i] = Serial.read();
-      }
-      message_state = MESSAGE_READY;
+      message->state = MESSAGE_READY;
     }
     break;
   }
@@ -37,5 +34,5 @@ byte read_message(void) {
     break;
   }
 
-  return message_state == MESSAGE_READY;
+  return message->state == MESSAGE_READY;
 }

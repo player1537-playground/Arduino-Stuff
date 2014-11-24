@@ -11,16 +11,22 @@ enum message_state_t {
   WAITING_FOR_ACTION,
   WAITING_FOR_MESSAGE,
   MESSAGE_READY
-} message_state;
+};
 
-struct message_t {
+struct message_data_t {
+  enum message_state_t state;
   struct {
     byte length;
     byte action;
   } header;
   byte body[MAX_MESSAGE_LENGTH];
-} message;
+};
 
-byte read_message(void);
+struct message_t {
+  enum message_state_t state;
+  struct message_data_t data;
+};
+
+byte read_message(struct message_t *);
 
 #endif // COMMUNICATE_MESSAGE_H_

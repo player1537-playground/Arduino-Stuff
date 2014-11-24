@@ -22,18 +22,20 @@ struct motor_message_t {
 };
 
 void process_motor_message(struct motor_message_t*, byte);
-void process_message(void);
+void process_message(struct message_t *);
 
-void process_message(void) {
-  if (message_state != MESSAGE_READY) {
+void process_message(struct message_t *message) {
+  byte body_length;
+
+  if (message->state != MESSAGE_READY) {
     return;
   }
 
-  byte body_length = message.header.length - sizeof(message.header);
+  body_length = message->data.header.length - sizeof(message->data.header);
 
-  switch (message.header.action) {
+  switch (message->data.header.action) {
   case 'm':
-    process_motor_message((struct motor_message_t *)&message, body_length);
+    process_motor_message((struct motor_message_t *)&message->data, body_length);
     break;
   }
 
@@ -67,12 +69,13 @@ void process_motor_message(struct motor_message_t *motor_message, byte size) {
   }
 }
 
+struct message_t message;
 void setup(void) {
   Serial.begin(9600);
 }
 
 void loop(void) {
-  if (read_message()) {
-    process_message();
+  if (read_message(&message)) {
+    process_message(&message);
   }
 }
