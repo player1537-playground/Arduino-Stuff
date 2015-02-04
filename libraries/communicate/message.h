@@ -28,5 +28,6 @@ struct message_t {
 };
 
 byte read_message(struct message_t *);
+void message_processed(struct message_t *);
 
 #endif // COMMUNICATE_MESSAGE_H_

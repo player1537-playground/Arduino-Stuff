@@ -36,3 +36,7 @@ byte read_message(struct message_t *message) {
 
 	return message->state == MESSAGE_READY;
 }
+
+void message_processed(struct message_t *message) {
+	message->state = WAITING_FOR_LENGTH;
+}
