@@ -1,0 +1,20 @@
+# ICs
+
+| Name                       | ID            | Documentation    | Qty |
+|----------------------------+---------------+------------------+-----|
+| 4 bits x 16 words register | CD74HCT40105E | [[http://www.ti.com/lit/ds/symlink/cd74hc40105.pdf][ti.com]]           |   1 |
+| Dual 1 to 4 decoder        | SN74LS155N    | [[http://pdf1.alldatasheet.com/datasheet-pdf/view/5661/MOTOROLA/SN74LS155N/+_W52uplRMROLDdVyDCybzGha+/datasheet.pdf][alldatasheet.com]] |   2 |
+| 4 bit counter              | SN74LS191N    | [[http://www.mouser.com/ds/2/405/sdls072-103121.pdf][mouser.com]]       |   2 |
+| 1 to 8 multiplexer         | DM74LS151N    | [[http://pdf1.alldatasheet.com/datasheet-pdf/view/51036/FAIRCHILD/DM74LS151N/+_114JUwYhRDpKxHeIT.DudwHEc+/datasheet.pdf][alldatasheet.com]] |   3 |
+| 12-bit counter             | CD4040BCN     | [[http://pdf1.alldatasheet.com/datasheet-pdf/view/8174/NSC/CD4040BCN/+517WuIOzZwEB8N-hpu+/datasheet.pdf][alldatasheet.com]] |   2 |
+| No idea                    | 7493PC        | No idea          |   2 |
+| 8-bit shift register       | SN74HC595N    | [[http://www.ti.com.cn/cn/lit/ds/scls041h/scls041h.pdf][ti.com]]           |   1 |
+| BCD to seven segment       | HD74LS48P     | [[http://documentation.renesas.com/doc/products/logic/rej03d0411_hd74ls48.pdf][renesas.com]]      |   1 |
+| 8/10/12 bit DAC            | MCP4901       | [[http://ww1.microchip.com/downloads/en/DeviceDoc/22248a.pdf][microchip.com]]    |   1 |
+| ATTiny45                   | ATTiny45      | [[http://www.atmel.com/Images/Atmel-2586-AVR-8-bit-Microcontroller-ATtiny25-ATtiny45-ATtiny85_Datasheet.pdf][atmel.com]]        | >10 |
+
+# General Components
+
+| Name | ID | Documentation | Qty |
+|------+----+---------------+-----|
+|      |    |               |     |
