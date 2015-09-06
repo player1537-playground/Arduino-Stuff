@@ -29,7 +29,7 @@ void process_message(struct message_t *message) {
 
   switch (message->data.header.action) {
   case 'm':
-	  if (process_motor_message((struct motor_message_t *)&message->data, body_length)) {
+	  if (process_motor_message((struct motor_message_t *)message->data.body, body_length)) {
 		  message_processed(message);
 	  }
     break;
