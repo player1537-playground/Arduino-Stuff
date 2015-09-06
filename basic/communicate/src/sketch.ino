@@ -35,7 +35,7 @@ void process_message(struct message_t *message) {
 
   switch (message->data.header.action) {
   case 'm':
-    process_motor_message((struct motor_message_t *)&message->data, body_length);
+    process_motor_message((struct motor_message_t *)message->data.body, body_length);
     break;
   }
 
